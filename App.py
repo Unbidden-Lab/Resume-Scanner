@@ -19,10 +19,9 @@ from PIL import Image
 import pymysql
 from Courses import ds_course, web_course, android_course, ios_course, uiux_course, resume_videos, interview_videos
 import plotly.express as px
+import yt_dlp
 import youtube_dl
 import pafy
-import sqlite3
-
 
 def fetch_yt_video(link):
     video = pafy.new(link)
@@ -83,7 +82,7 @@ def course_recommender(course_list):
     return rec_course
 
 
-connection = sqlite3.connect("resumes.db")  # This creates a file in the app's dir
+connection = pymysql.connect(host='localhost', user='root', password='')
 cursor = connection.cursor()
 
 
@@ -117,27 +116,27 @@ def run():
     st.image(img)
 
     # Create the DB
-    connection = sqlite3.connect("sra.db")
-    cursor = connection.cursor()
+    db_sql = """CREATE DATABASE IF NOT EXISTS SRA;"""
+    cursor.execute(db_sql)
+    connection.select_db("sra")
 
     # Create table
-    table_sql = """
-CREATE TABLE IF NOT EXISTS user_data (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Name TEXT NOT NULL,
-    Email_ID TEXT NOT NULL,
-    resume_score TEXT NOT NULL,
-    Timestamp TEXT NOT NULL,
-    Page_no TEXT NOT NULL,
-    Predicted_Field TEXT NOT NULL,
-    User_level TEXT NOT NULL,
-    Actual_skills TEXT NOT NULL,
-    Recommended_skills TEXT NOT NULL,
-    Recommended_courses TEXT NOT NULL
-);
-"""
+    DB_table_name = 'user_data'
+    table_sql = "CREATE TABLE IF NOT EXISTS " + DB_table_name + """
+                    (ID INT NOT NULL AUTO_INCREMENT,
+                     Name varchar(100) NOT NULL,
+                     Email_ID VARCHAR(50) NOT NULL,
+                     resume_score VARCHAR(8) NOT NULL,
+                     Timestamp VARCHAR(50) NOT NULL,
+                     Page_no VARCHAR(5) NOT NULL,
+                     Predicted_Field VARCHAR(25) NOT NULL,
+                     User_level VARCHAR(30) NOT NULL,
+                     Actual_skills VARCHAR(300) NOT NULL,
+                     Recommended_skills VARCHAR(300) NOT NULL,
+                     Recommended_courses VARCHAR(600) NOT NULL,
+                     PRIMARY KEY (ID));
+                    """
     cursor.execute(table_sql)
-    connection.commit()
     if choice == 'Normal User':
         # st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Upload your resume, and get smart recommendation based on it."</h4>''',
         #             unsafe_allow_html=True)
