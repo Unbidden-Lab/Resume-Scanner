@@ -1,10 +1,11 @@
 import streamlit as st
 import nltk
 import spacy
+import pyresparser.resume_parser
 nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
 
-import pyresparser.resume_parser
+
 pyresparser.resume_parser.custom_nlp = nlp
 
 save_image_path = './Uploaded_Resumes/'
@@ -153,7 +154,7 @@ CREATE TABLE IF NOT EXISTS user_data (
             with open(save_image_path, "wb") as f:
                 f.write(pdf_file.getbuffer())
             show_pdf(save_image_path)
-            resume_data = ResumeParser(save_image_path, nlp=nlp).get_extracted_data()
+            resume_data = pyresparser.ResumeParser(save_image_path).get_extracted_data()
             if resume_data:
                 ## Get the whole resume data
                 resume_text = pdf_reader(save_image_path)
