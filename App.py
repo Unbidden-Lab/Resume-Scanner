@@ -3,8 +3,8 @@ import nltk
 import spacy
 nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
-from pyresparser import ResumeParser
 import pyresparser
+from pyresparser import ResumeParser
 nltk.download('stopwords')
 
 pyresparser.resume_parser.custom_nlp = spacy.load("en_core_web_sm")
