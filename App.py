@@ -28,6 +28,8 @@ import youtube_dl
 import pafy
 import sqlite3
 
+original_init = resume_parser.ResumeParser.__init__
+
 def fetch_yt_video(link):
     video = pafy.new(link)
     return video.title
