@@ -7,7 +7,7 @@ from pyresparser import ResumeParser
 import pyresparser.resume_parser
 nltk.download('stopwords')
 
-pyresparser.resume_parser.custom_nlp = spacy.load("en_core_web_sm")
+pyresparser.ResumeParser.custom_nlp = spacy.load("en_core_web_sm")
 
 save_image_path = './Uploaded_Resumes/new_resume_001.pdf'
 
