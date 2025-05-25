@@ -4,6 +4,7 @@ import nltk
 nltk.download('stopwords')
 
 import spacy
+from pyresparser import ResumeParser
 import pyresparser.resume_parser
 nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
@@ -16,7 +17,6 @@ save_image_path = './Uploaded_Resumes/'
 import pandas as pd
 import base64, random
 import time, datetime
-from pyresparser import ResumeParser
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
 from pdfminer3.pdfinterp import PDFResourceManager
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS user_data (
             with open(save_image_path, "wb") as f:
                 f.write(pdf_file.getbuffer())
             show_pdf(save_image_path)
-            resume_data = pyresparser.ResumeParser(save_image_path).get_extracted_data()
+            resume_data = ResumeParser(save_image_path, nlp=nlp).get_extracted_data()
             if resume_data:
                 ## Get the whole resume data
                 resume_text = pdf_reader(save_image_path)
