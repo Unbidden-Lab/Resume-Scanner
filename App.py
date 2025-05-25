@@ -9,7 +9,7 @@ nltk.download('stopwords')
 
 pyresparser.resume_parser.custom_nlp = nlp
 
-save_image_path = '/Uploaded_Resumes/new_resume_001.pdf'
+save_image_path = './Uploaded_Resumes/new_resume_001.pdf'
 
 import pandas as pd
 import base64, random
