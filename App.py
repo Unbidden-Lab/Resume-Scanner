@@ -373,14 +373,14 @@ CREATE TABLE IF NOT EXISTS user_data (
                 insert_data(
                 resume_data['name'], 
                  resume_data['email'], 
-    str(resume_score), 
-    timestamp,
-    str(resume_data['no_of_pages']), 
-    reco_field, 
-    cand_level, 
-    str(resume_data['skills']),
-    str(recommended_skills),   # <-- you need to provide this
-    str(rec_course)            # <-- and this as well
+                 str(resume_score), 
+                 timestamp,
+                 str(resume_data['no_of_pages']), 
+                 reco_field, 
+                 cand_level, 
+                 str(resume_data['skills']),
+               str(recommended_skills),   # <-- you need to provide this
+                 str(rec_course)            # <-- and this as well
 )
 
 
