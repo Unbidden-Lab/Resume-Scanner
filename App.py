@@ -1,18 +1,13 @@
 import streamlit as st
 import nltk
 import spacy
-from spacy.matcher import Matcher
 nltk.download('stopwords')
-nlp = spacy.load('en_core_web_sm')
-import pyresparser
-nltk.download('stopwords')
-import pyresparser.resume_parser as resume_parser
-
-save_image_path = './Uploaded_Resumes/new_resume_001.pdf'
+spacy.load('en_core_web_sm')
 
 import pandas as pd
 import base64, random
 import time, datetime
+from pyresparser import ResumeParser
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
 from pdfminer3.pdfinterp import PDFResourceManager
@@ -28,23 +23,11 @@ import youtube_dl
 import pafy
 import sqlite3
 
-original_init = resume_parser.ResumeParser.__init__
 
 def fetch_yt_video(link):
     video = pafy.new(link)
     return video.title
 
-def fixed_init(self, resume_path, skills_file=None, custom_regex=None):
-    self.resume_path = resume_path
-    self.__skills_file = skills_file
-    self.__custom_regex = custom_regex
-    self.nlp = spacy.load("en_core_web_sm")  # load correct model here
-    self.__matcher = Matcher(self.nlp.vocab)
-    self.__stopwords = set()
-    # any other necessary init steps here (if ResumeParser has more in __init__)
-
-
-resume_parser.ResumeParser.__init__ = fixed_init
 
 def get_table_download_link(df, filename, text):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
@@ -123,8 +106,6 @@ st.set_page_config(
 
 
 def run():
-    from pyresparser import ResumeParser
-    pyresparser.resume_parser.custom_nlp = spacy.load("en_core_web_sm")
     st.title("Intelligent Resume Scanner")
     st.sidebar.markdown("# Choose User")
     activities = ["Normal User", "Admin"]
