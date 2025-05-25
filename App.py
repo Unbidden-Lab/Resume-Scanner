@@ -370,7 +370,7 @@ CREATE TABLE IF NOT EXISTS user_data (
                     "** Note: This score is calculated based on the content that you have added in your Resume. **")
                 st.balloons()
 
-                insert_data(
+                insert_data(cursor, connection,
                 resume_data['name'], 
                  resume_data['email'], 
                  str(resume_score), 
