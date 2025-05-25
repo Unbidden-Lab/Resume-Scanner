@@ -1,18 +1,15 @@
 import streamlit as st
 import nltk
-
-nltk.download('stopwords')
-
 import spacy
+nltk.download('stopwords')
+nlp = spacy.load('en_core_web_sm')
 from pyresparser import ResumeParser
 import pyresparser.resume_parser
 nltk.download('stopwords')
-nlp = spacy.load('en_core_web_sm')
-
 
 pyresparser.resume_parser.custom_nlp = nlp
 
-save_image_path = './Uploaded_Resumes/'
+save_image_path = '/Uploaded_Resumes/'
 
 import pandas as pd
 import base64, random
