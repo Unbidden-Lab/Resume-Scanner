@@ -1,5 +1,8 @@
 import streamlit as st
 import nltk
+
+nltk.download('stopwords')
+
 import spacy
 import pyresparser.resume_parser
 nltk.download('stopwords')
