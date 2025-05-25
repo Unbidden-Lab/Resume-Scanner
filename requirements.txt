@@ -10,7 +10,7 @@ Pillow
 youtube-dl
 nltk
 pdfminer3
-thinc==8.3.0
+thinc==8.2.5
 numpy
 spacy[cpu]==3.7.4
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
