@@ -21,6 +21,7 @@ from Courses import ds_course, web_course, android_course, ios_course, uiux_cour
 import plotly.express as px
 import youtube_dl
 import pafy
+import sqlite3
 
 def fetch_yt_video(link):
     video = pafy.new(link)
@@ -81,7 +82,7 @@ def course_recommender(course_list):
     return rec_course
 
 
-connection = pymysql.connect(host='localhost', user='root', password='')
+connection = sqlite3.connect("resumes.db")  # This creates a file in the app's dir
 cursor = connection.cursor()
 
 
