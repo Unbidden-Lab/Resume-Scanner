@@ -6,7 +6,7 @@ nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
 import pyresparser
 nltk.download('stopwords')
-
+import pyresparser.resume_parser as resume_parser
 
 save_image_path = './Uploaded_Resumes/new_resume_001.pdf'
 
@@ -40,6 +40,9 @@ def fixed_init(self, resume_path, skills_file=None, custom_regex=None):
     self.__matcher = Matcher(self.nlp.vocab)
     self.__stopwords = set()
     # any other necessary init steps here (if ResumeParser has more in __init__)
+
+
+resume_parser.ResumeParser.__init__ = fixed_init
 
 def get_table_download_link(df, filename, text):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
