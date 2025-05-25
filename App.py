@@ -13,7 +13,6 @@ import pandas as pd
 import base64, random
 import time, datetime
 from pyresparser import ResumeParser
-resume_data = ResumeParser(save_image_path).get_extracted_data()
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
 from pdfminer3.pdfinterp import PDFResourceManager
