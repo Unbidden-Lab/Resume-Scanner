@@ -89,11 +89,12 @@ cursor = connection.cursor()
 def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand_level, skills, recommended_skills,
                 courses):
     DB_table_name = 'user_data'
-    insert_sql = "insert into " + DB_table_name + """
-    values (0,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+    insert_sql = "INSERT INTO " + DB_table_name + """
+    VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
     rec_values = (
-    name, email, str(res_score), timestamp, str(no_of_pages), reco_field, cand_level, skills, recommended_skills,
-    courses)
+        name, email, str(res_score), timestamp, str(no_of_pages), reco_field,
+        cand_level, skills, recommended_skills, courses
+    )
     cursor.execute(insert_sql, rec_values)
     connection.commit()
 
