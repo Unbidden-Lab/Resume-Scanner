@@ -111,6 +111,7 @@ st.set_page_config(
 
 
 def run():
+    pyresparser.resume_parser.custom_nlp = spacy.load("en_core_web_sm")
     st.title("Intelligent Resume Scanner")
     st.sidebar.markdown("# Choose User")
     activities = ["Normal User", "Admin"]
