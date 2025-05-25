@@ -5,7 +5,6 @@ from spacy.matcher import Matcher
 nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
 import pyresparser
-from pyresparser import ResumeParser
 nltk.download('stopwords')
 
 pyresparser.resume_parser.custom_nlp = spacy.load("en_core_web_sm")
@@ -120,6 +119,7 @@ st.set_page_config(
 
 
 def run():
+    from pyresparser import ResumeParser
     pyresparser.resume_parser.custom_nlp = spacy.load("en_core_web_sm")
     st.title("Intelligent Resume Scanner")
     st.sidebar.markdown("# Choose User")
