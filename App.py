@@ -1,6 +1,7 @@
 import streamlit as st
 import nltk
 import spacy
+from spacy.matcher import Matcher
 nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
 import pyresparser
@@ -33,6 +34,14 @@ def fetch_yt_video(link):
     video = pafy.new(link)
     return video.title
 
+def fixed_init(self, resume_path, skills_file=None, custom_regex=None):
+    self.resume_path = resume_path
+    self.__skills_file = skills_file
+    self.__custom_regex = custom_regex
+    self.nlp = spacy.load("en_core_web_sm")  # load correct model here
+    self.__matcher = Matcher(self.nlp.vocab)
+    self.__stopwords = set()
+    # any other necessary init steps here (if ResumeParser has more in __init__)
 
 def get_table_download_link(df, filename, text):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
