@@ -7,6 +7,9 @@ nlp = spacy.load('en_core_web_sm')
 import pyresparser.resume_parser
 pyresparser.resume_parser.custom_nlp = nlp
 
+save_image_path = './Uploaded_Resumes/'
+resume_data = ResumeParser(save_image_path).get_extracted_data()
+
 import pandas as pd
 import base64, random
 import time, datetime
