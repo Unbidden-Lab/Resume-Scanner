@@ -384,17 +384,19 @@ def run():
                 insert_data(
     cursor,
     connection,
-    resume_data['email'],               # ID
-    resume_data['name'],               # name
-    str(resume_score),                 # res_score
-    timestamp,                         # timestamp
-    str(resume_data['no_of_pages']),  # no_of_pages
-    reco_field,                        # reco_field
-    cand_level,                        # cand_level
-    str(resume_data['skills']),       # skills
-    str(recommended_skills),          # recommended_skills
-    str(rec_course)                   # courses ✅ Don't forget this
+    resume_data['email'],             # ID
+    resume_data['name'],             # name
+    resume_data['email'],            # email (again, separately)
+    str(resume_score),               # res_score
+    timestamp,                       # timestamp
+    str(resume_data['no_of_pages']),# no_of_pages
+    reco_field,                      # reco_field
+    cand_level,                      # cand_level
+    str(resume_data['skills']),     # skills
+    str(recommended_skills),        # recommended_skills
+    str(rec_course)                 # courses
 )
+
 
 
                 connection.commit()
