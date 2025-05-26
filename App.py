@@ -382,17 +382,16 @@ def run():
                 st.balloons()
 
                 insert_data(cursor, connection,
-            resume_data['email'],                # Using email as unique ID
-            resume_data['name'], 
-            resume_data['email'], 
-            str(resume_score), 
+            resume_data['email'],            # Used as ID
+            resume_data['name'],
+            str(resume_score),
             timestamp,
-            str(resume_data['no_of_pages']), 
-            reco_field, 
-            cand_level, 
+            str(resume_data['no_of_pages']),
+            reco_field,
+            cand_level,
             str(resume_data['skills']),
-            str(recommended_skills), 
-            str(rec_course))                     # ← this closing parenthesis was missing
+            str(recommended_skills),
+            str(rec_course))                 # courses
 
 
 
