@@ -86,17 +86,30 @@ connection = sqlite3.connect('mydatabase.db')
 cursor = connection.cursor()
 
 
-def insert_data(cursor, connection, name, email, res_score, timestamp, no_of_pages, reco_field, cand_level, skills, recommended_skills, courses):
-    insert_sql = """
-    INSERT INTO user_data
-    VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """
+def insert_data(cursor, connection, ID, name, email, res_score, timestamp,
+                no_of_pages, reco_field, cand_level, skills, 
+                recommended_skills, courses):
+
+    # Check for existing ID
+    cursor.execute("SELECT 1 FROM user_data WHERE ID = ?", (ID,))
+    if cursor.fetchone():
+        print("ID already exists, skipping insert.")
+        return
+
+    insert_sql = '''
+        INSERT INTO user_data (ID, name, email, res_score, timestamp, 
+            no_of_pages, reco_field, cand_level, skills, 
+            recommended_skills, courses)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    '''
     rec_values = (
-        name, email, res_score, timestamp, no_of_pages, reco_field,
-        cand_level, skills, recommended_skills, courses
+        ID, name, email, res_score, timestamp,
+        no_of_pages, reco_field, cand_level, skills,
+        recommended_skills, courses
     )
     cursor.execute(insert_sql, rec_values)
     connection.commit()
+
 
 
 
