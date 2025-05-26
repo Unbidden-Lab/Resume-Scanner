@@ -386,7 +386,6 @@ def run():
     connection,
     resume_data['email'],             # ID
     resume_data['name'],             # name
-    resume_data['email'],            # email (again, separately)
     str(resume_score),               # res_score
     timestamp,                       # timestamp
     str(resume_data['no_of_pages']),# no_of_pages
