@@ -86,9 +86,9 @@ connection = sqlite3.connect('mydatabase.db')
 cursor = connection.cursor()
 
 
-def insert_data(cursor, connection, ID, name, email, res_score, timestamp,
-                no_of_pages, reco_field, cand_level, skills, 
-                recommended_skills, courses):
+def insert_data(cursor, connection, ID, Name, Email_ID, resume_score, Timestamp,
+                Page_no, Predicted_Field, User_level, Actual_skills,
+                Recommended_skills, Recommended_courses):
 
     # Check for existing ID
     cursor.execute("SELECT 1 FROM user_data WHERE ID = ?", (ID,))
@@ -97,18 +97,20 @@ def insert_data(cursor, connection, ID, name, email, res_score, timestamp,
         return
 
     insert_sql = '''
-        INSERT INTO user_data (ID, name, email, res_score, timestamp, 
-            no_of_pages, reco_field, cand_level, skills, 
-            recommended_skills, courses)
+        INSERT INTO user_data (
+            ID, Name, Email_ID, resume_score, Timestamp, Page_no,
+            Predicted_Field, User_level, Actual_skills,
+            Recommended_skills, Recommended_courses)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     '''
     rec_values = (
-        ID, name, email, res_score, timestamp,
-        no_of_pages, reco_field, cand_level, skills,
-        recommended_skills, courses
+        ID, Name, Email_ID, resume_score, Timestamp, Page_no,
+        Predicted_Field, User_level, Actual_skills,
+        Recommended_skills, Recommended_courses
     )
     cursor.execute(insert_sql, rec_values)
     connection.commit()
+
 
 
 
@@ -384,16 +386,17 @@ def run():
                 insert_data(
     cursor,
     connection,
-    resume_data['email'],             # ID
-    resume_data['name'],             # name
-    str(resume_score),               # res_score
-    timestamp,                       # timestamp
-    str(resume_data['no_of_pages']),# no_of_pages
-    reco_field,                      # reco_field
-    cand_level,                      # cand_level
-    str(resume_data['skills']),     # skills
-    str(recommended_skills),        # recommended_skills
-    str(rec_course)                 # courses
+    None,                  # must be integer or None for AUTOINCREMENT
+    resume_data['name'],
+    resume_data['email'], 
+    str(resume_score),
+    timestamp,
+    str(resume_data['no_of_pages']),
+    reco_field,
+    cand_level,
+    str(resume_data['skills']),
+    str(recommended_skills),
+    str(rec_course)
 )
 
 
