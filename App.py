@@ -381,19 +381,20 @@ def run():
                     "** Note: This score is calculated based on the content that you have added in your Resume. **")
                 st.balloons()
 
-                insert_data(cursor, connection,
-            resume_data['email'],            # Used as ID
-            resume_data['name'],
-            str(resume_score),
-            timestamp,
-            str(resume_data['no_of_pages']),
-            reco_field,
-            cand_level,
-            str(resume_data['skills']),
-            str(recommended_skills),
-            str(rec_course))                 # courses
-
-
+                insert_data(
+    cursor,
+    connection,
+    resume_data['email'],               # ID
+    resume_data['name'],               # name
+    str(resume_score),                 # res_score
+    timestamp,                         # timestamp
+    str(resume_data['no_of_pages']),  # no_of_pages
+    reco_field,                        # reco_field
+    cand_level,                        # cand_level
+    str(resume_data['skills']),       # skills
+    str(recommended_skills),          # recommended_skills
+    str(rec_course)                   # courses ✅ Don't forget this
+)
 
 
                 connection.commit()
