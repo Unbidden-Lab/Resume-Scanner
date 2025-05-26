@@ -111,8 +111,6 @@ def run():
     st.sidebar.markdown("# Choose User")
     activities = ["Normal User", "Admin"]
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
-    # link = '[©Developed by Spidy20](http://github.com/spidy20)'
-    # st.sidebar.markdown(link, unsafe_allow_html=True)
     img = Image.open('./Logo/Logo.jpg')
     img = img.resize((250, 250))
     st.image(img)
@@ -123,7 +121,7 @@ def run():
 
     # Create table
     table_sql = """
-CREATE TABLE IF NOT EXISTS user_data (
+    CREATE TABLE IF NOT EXISTS user_data (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL,
     Email_ID TEXT NOT NULL,
@@ -217,7 +215,7 @@ CREATE TABLE IF NOT EXISTS user_data (
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='2')
                         st.markdown(
-                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',
+                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to your resume will boost🚀 the chances of getting a Job💼</h4>''',
                             unsafe_allow_html=True)
                         rec_course = course_recommender(ds_course)
                         break
@@ -233,7 +231,7 @@ CREATE TABLE IF NOT EXISTS user_data (
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='3')
                         st.markdown(
-                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',
+                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to your resume will boost🚀 the chances of getting a Job💼</h4>''',
                             unsafe_allow_html=True)
                         rec_course = course_recommender(web_course)
                         break
@@ -249,7 +247,7 @@ CREATE TABLE IF NOT EXISTS user_data (
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='4')
                         st.markdown(
-                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',
+                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to your resume will boost🚀 the chances of getting a Job💼</h4>''',
                             unsafe_allow_html=True)
                         rec_course = course_recommender(android_course)
                         break
@@ -266,7 +264,7 @@ CREATE TABLE IF NOT EXISTS user_data (
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='5')
                         st.markdown(
-                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',
+                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to your resume will boost🚀 the chances of getting a Job💼</h4>''',
                             unsafe_allow_html=True)
                         rec_course = course_recommender(ios_course)
                         break
@@ -284,7 +282,7 @@ CREATE TABLE IF NOT EXISTS user_data (
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='6')
                         st.markdown(
-                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to resume will boost🚀 the chances of getting a Job💼</h4>''',
+                            '''<h4 style='text-align: left; color: #1ed760;'>Adding this skills to your resume will boost🚀 the chances of acquiring a Job💼</h4>''',
                             unsafe_allow_html=True)
                         rec_course = course_recommender(uiux_course)
                         break
@@ -379,8 +377,8 @@ CREATE TABLE IF NOT EXISTS user_data (
                  reco_field, 
                  cand_level, 
                  str(resume_data['skills']),
-               str(recommended_skills),   # <-- you need to provide this
-                 str(rec_course)            # <-- and this as well
+               str(recommended_skills), 
+                 str(rec_course)           
 )
 
 
