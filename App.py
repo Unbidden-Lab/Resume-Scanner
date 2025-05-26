@@ -109,7 +109,7 @@ st.set_page_config(
 def run():
     st.title("Intelligent Resume Scanner")
     st.sidebar.markdown("# Choose User")
-    activities = ["Normal User", "Admin"]
+    activities = ["User", "Admin"]
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
     img = Image.open('./Logo/Logo.jpg')
     img = img.resize((250, 250))
@@ -137,10 +137,10 @@ def run():
 """
     cursor.execute(table_sql)
     connection.commit()
-    if choice == 'Normal User':
+    if choice == 'User':
         # st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Upload your resume, and get smart recommendation based on it."</h4>''',
         #             unsafe_allow_html=True)
-        pdf_file = st.file_uploader("Choose your Resume", type=["pdf"])
+        pdf_file = st.file_uploader("Upload a resume", type=["pdf"])
         if pdf_file is not None:
             # with st.spinner('Uploading your Resume....'):
             #     time.sleep(4)
